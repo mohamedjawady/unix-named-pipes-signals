@@ -2,6 +2,39 @@
 #include "Handlers_Serv.h"
 #include "utils.h"
 
+void hand_response(int sig);
+
+int main(int argc, char *argv[])
+{
+    pid_t pid = getpid();
+    srand(pid);
+    signal(SIGUSR1, hand_response);
+
+    // Initialize question
+    Question question;
+    question.n = (rand() % NMAX);
+    question.pid = pid;
+
+    int fd = open(FIFO1, O_WRONLY);
+    if (fd == -1)
+    {
+        errorHandleClient(3);
+    }
+
+    write(fd, &question, sizeof(question));
+
+    char displaymsg[50];
+    snprintf(displaymsg, 50, "Sent question %d to server", question.n);
+
+    debugMessage(displaymsg);
+
+    close(fd);
+
+    pause();
+
+    return 0;
+}
+
 void hand_response(int sig)
 {
     debugMessage("Received signal from server");
@@ -26,36 +59,6 @@ void hand_response(int sig)
 
     close(fd);
 
-    kill(answer.pid, SIGUSR1);
     debugMessage("Sent final Ack signal to server");
-}
-
-int main(int argc, char *argv[])
-{
-    pid_t pid = getpid();
-    srand(pid);
-    signal(SIGUSR1, hand_response);
-
-    // Initialize question
-    Question question;
-    question.n = (rand() % NMAX);
-    question.pid = pid;
-
-    int fd = open(FIFO1, O_WRONLY);
-    if (fd == -1)
-    {
-        errorHandleClient(3);
-    }
-
-    write(fd, &question, sizeof(question));
-
-    char displaymsg[50];
-    snprintf(displaymsg, 50, "Sent question %d to server", question.n);
-    debugMessage(displaymsg);
-
-    close(fd);
-
-    pause();
-
-    return 0;
+    kill(answer.pid, SIGUSR1);
 }

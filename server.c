@@ -2,18 +2,19 @@
 #include "Handlers_Serv.h"
 #include "utils.h"
 
-void fin_serveur(int sig)
-{
-    debugMessage("Received signal from client");
-    printf("Client request processed\n");
-    printf("----------------------------------------------------------\n");
-    fflush(stdout);
-}
-
 int main(int argc, char **argv, char **envp)
 {
     pid_t pid = getpid();
-    signal(SIGUSR1, fin_serveur);
+    signal(SIGUSR1, fin_conversation);
+    for (int i = 1; i < 32; i++)
+    {
+        // 31 signals guaranteed in POSIX Systems
+        if (i == SIGUSR1)
+        {
+            continue;
+        }
+        signal(i, fin_serveur);
+    }
     srand(pid);
     int fd, fd2;
 
@@ -90,5 +91,6 @@ int main(int argc, char **argv, char **envp)
         }
         debugMessage("Answer generated and sent via fifo2");
         close(fd2);
+        pause();
     }
 }
