@@ -75,7 +75,7 @@ To use the project:
 
 These steps are automated through `testing.py`, running the command.
 ```python
-testing.py
+python testing.py
 ```
 
 ## Conclusion
