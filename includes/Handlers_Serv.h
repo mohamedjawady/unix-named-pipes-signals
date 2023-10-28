@@ -1,6 +1,8 @@
 #ifndef HANDLERS_SERV
 #define HANDLERS_SERV
 
+#include <stdlib.h>
+
 // handle signal coming from server
 void hand_reveil(int sig);
 
