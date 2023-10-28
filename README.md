@@ -6,23 +6,23 @@ This repository contains a university project that implements a Unix client-serv
 
 ### Server
 - [server.c](server.c) - The server implementation.
-- [serv_cli_fifo.h](include/serv_cli_fifo.h) - Header file for server-client communication via named pipes.
-- [Handlers_Serv.h](include/Handlers_Serv.h) - Header file containing server signal handlers.
-- [utils.h](include/utils.h) - Header file for utility functions used in the server.
+- [serv_cli_fifo.h](includes/serv_cli_fifo.h) - Header file for server-client communication via named pipes.
+- [Handlers_Serv.h](includes/Handlers_Serv.h) - Header file containing server signal handlers.
+- [utils.h](includes/utils.h) - Header file for utility functions used in the server.
 
 ### Client
 - [client.c](client.c) - The client implementation.
-- [serv_cli_fifo.h](include/serv_cli_fifo.h) - Header file for server-client communication via named pipes.
-- [Handlers_Serv.h](include/Handlers_Serv.h) - Header file containing server signal handlers.
-- [utils.h](include/utils.h) - Header file for utility functions used in the client.
+- [serv_cli_fifo.h](includes/serv_cli_fifo.h) - Header file for server-client communication via named pipes.
+- [Handlers_Serv.h](includes/Handlers_Serv.h) - Header file containing server signal handlers.
+- [utils.h](includes/utils.h) - Header file for utility functions used in the client.
 
 ### Error Handling
 - [errors.c](errors.c) - Error handling functions for the server and client.
-- [errors.h](include/errors.h) - Header file for error handling functions.
+- [errors.h](includes/errors.h) - Header file for error handling functions.
 
 ### Utilities
 - [utils.c](utils.c) - Utility functions used in both the server and client.
-- [utils.h](include/utils.h) - Header file for utility functions.
+- [utils.h](includes/utils.h) - Header file for utility functions.
 
 ## Build the Project
 
@@ -42,7 +42,7 @@ A Python script, testing.py, is provided for testing the project. It can start b
 
 To run the testing script, use the following command:
 ```
-python testing.py
+python3 testing.py
 ```  
 
 ## Conclusion
