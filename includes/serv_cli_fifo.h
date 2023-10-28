@@ -11,7 +11,6 @@
 #include <fcntl.h>
 #include "errors.h"
 
-#define MAX_CMD 500
 #define FIFO_PERMS 0666
 #define NMAX 100
 #define FIFO1 "/tmp/fifo1"
@@ -27,7 +26,7 @@ typedef struct
 {
     pid_t pid;
     unsigned int seq_length;
-    int sequence[MAX_CMD];
+    int sequence[NMAX];
 } Reponse;
 
 #endif
