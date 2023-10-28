@@ -11,7 +11,7 @@ void fin_conversation(int sig)
 void fin_serveur(int sig)
 {
     char msg[50];
-    sprintf(msg, "Received signal %d from client", sig);
+    sprintf(msg, "Received signal %d", sig);
     debugMessage(msg);
     printf("Shutting down...\n");
     printf("----------------------------------------------------------\n");
